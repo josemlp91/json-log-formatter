@@ -130,6 +130,11 @@ class JSONFormatter(logging.Formatter):
             attr = json_record[attr_name]
             if isinstance(attr, datetime):
                 json_record[attr_name] = attr.isoformat()
+            if isinstance(attr, socket):
+                del json_record[attr_name]
+            if isinstance(attr, WSGIRequest)
+                del json_record[attr_name]
+
         return json_record
 
 
