@@ -130,10 +130,15 @@ class JSONFormatter(logging.Formatter):
             attr = json_record[attr_name]
             if isinstance(attr, datetime):
                 json_record[attr_name] = attr.isoformat()
-            try:
-                json.dumps(attr)
-            except:
-                json_record[attr_name] = {}
+                
+            if hasattr(attr, "__dict__"):
+                json_record[attr_name] = attr.__dict__
+            
+            else:
+                try:
+                    json.dumps(attr)
+                except:
+                    json_record[attr_name] = {}
 
         return json_record
 
