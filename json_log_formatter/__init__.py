@@ -132,7 +132,7 @@ class JSONFormatter(logging.Formatter):
                 json_record[attr_name] = attr.isoformat()
             if isinstance(attr, socket):
                 del json_record[attr_name]
-            if isinstance(attr, WSGIRequest)
+            if isinstance(attr, WSGIRequest):
                 del json_record[attr_name]
 
         return json_record
