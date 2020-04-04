@@ -133,7 +133,7 @@ class JSONFormatter(logging.Formatter):
             try:
                 json.dumps(attr)
             except:
-                del json_record[attr_name]
+                json_record[attr_name] = {}
 
         return json_record
 
